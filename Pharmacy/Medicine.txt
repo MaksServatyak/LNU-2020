@@ -1,0 +1,4 @@
+Noksprey,runny nose,2009,1,drops
+Decatelen,sore throat,2011,3,tablets
+Analgin,headache,2007,2,tablets
+Nurofen,headache,2012,1,tablets
