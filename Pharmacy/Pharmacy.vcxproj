@@ -152,13 +152,18 @@
     <ClCompile Include="Drops.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Medicine.cpp" />
+    <ClCompile Include="MedicineRepo.cpp" />
+    <ClCompile Include="Repository.cpp" />
     <ClCompile Include="Tablets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Command.h" />
     <ClInclude Include="Cream.h" />
     <ClInclude Include="Drops.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Medicine.h" />
+    <ClInclude Include="MedicineRepo.h" />
+    <ClInclude Include="Repository.h" />
     <ClInclude Include="Tablets.h" />
   </ItemGroup>
   <ItemGroup>

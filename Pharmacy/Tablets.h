@@ -8,11 +8,7 @@ using namespace std;
 
 class Tablets : public Medicine
 {
-	string name;
-	string application;
-	int year;
-	int number;
-	string klas;
+	
 public:
 	Tablets (string = "", string = " ", int = 2020, int = 1, string = "");
 

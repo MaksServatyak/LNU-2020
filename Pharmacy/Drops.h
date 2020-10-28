@@ -8,11 +8,7 @@ using namespace std;
 
 class Drops : public Medicine
 {
-	string name;
-	string application;
-	int year;
-	int number;
-	string klas;
+
 public:
 	Drops(string = "", string = " ", int = 2020, int = 1, string = "");
 	void Write()
