@@ -31,7 +31,7 @@ Command::Command() {
 		fin.get();
 		fin.getline(klas, maxLen);
 
-		Medicine medicine(name, application, atoi(year), atoi(number),klas);
+		Medicine medicine(name, application, atoi(year), atoi(number), klas);
 		AddMedicine(medicine);
 
 	}
@@ -47,42 +47,42 @@ Command::Command() {
 }
 
 
-	Command::~Command()
+Command::~Command()
+{
+	ofstream fout("Medicine.txt");
+
+	for (int i = 0; i <= lastMedicineIndex; i++)
 	{
-		ofstream fout("Medicine.txt");
+		fout << medicines[i].GetName() << ","
+			<< medicines[i].GetApplication() << ","
+			<< medicines[i].GetYear() << ","
+			<< medicines[i].GetNumber() << ","
+			<< medicines[i].GetKlas();
 
-		for (int i = 0; i <= lastMedicineIndex; i++)
-		{
-			fout << medicines[i].GetName() << ","
-				<< medicines[i].GetApplication() << ","
-				<< medicines[i].GetYear() << ","
-				<< medicines[i].GetNumber() << ","
-				<< medicines[i].GetKlas();
-
-			if (i < lastMedicineIndex)
-				fout << endl;
-		}
-
-		fout.close();
-
-		delete[] medicines;
+		if (i < lastMedicineIndex)
+			fout << endl;
 	}
 
-	void Command::AddCream(Cream& cream)
-	{
-		AddMedicine(cream);
-	}
-	void Command::AddDrops(Drops& drops)
-	{
-		AddMedicine(drops);
-	}
-	void Command::AddTablets(Tablets& tablets)
-	{
-		AddMedicine(tablets);
-	}
+	fout.close();
+
+	delete[] medicines;
+}
+
+void Command::AddCream(Cream& cream)
+{
+	AddMedicine(cream);
+}
+void Command::AddDrops(Drops& drops)
+{
+	AddMedicine(drops);
+}
+void Command::AddTablets(Tablets& tablets)
+{
+	AddMedicine(tablets);
+}
 
 void Command::AddMedicine(Medicine& medicine) {
-	if (lastMedicineIndex>=100)
+	if (lastMedicineIndex >= 100)
 	{
 		throw "no memory for medicines";
 
@@ -144,12 +144,12 @@ void Command::Start() {
 		char userInput2;
 
 		cin >> userInput;
-		if (userInput=='1')
+		if (userInput == '1')
 		{
 			cmd.WriteMedicines();
 
 		}
-		else if (userInput=='2')
+		else if (userInput == '2')
 		{
 
 			cout << "Input name of medicine:";
@@ -163,40 +163,40 @@ void Command::Start() {
 			cout << endl;
 			cout << "Input number of medicine:";
 			cin >> number;
-			cout << "Input class of Medicine:"<<endl;
-			cout << "1.Tablets"<<endl;
-			cout << "2.Drops"<<endl;
-			cout << "3.Cream"<<endl;
+			cout << "Input class of Medicine:" << endl;
+			cout << "1.Tablets" << endl;
+			cout << "2.Drops" << endl;
+			cout << "3.Cream" << endl;
 			cin >> userInput2;
-			if (userInput2=='1')
+			if (userInput2 == '1')
 			{
-				c = Medicine(name, application, year, number,"tablets");
+				c = Medicine(name, application, year, number, "tablets");
 			}
-			else if(userInput2 == '2')
+			else if (userInput2 == '2')
 			{
-				c = Medicine(name, application, year, number,"drops");
+				c = Medicine(name, application, year, number, "drops");
 			}
-			else if(userInput2=='3')
+			else if (userInput2 == '3')
 			{
-				c = Medicine(name, application, year, number,"cream");
+				c = Medicine(name, application, year, number, "cream");
 			}
 			else
 			{
 				cout << "We do not have this class";
 			}
-				
-				try
-				{
-					cmd.AddMedicine(c);
-				}
-				catch (const char* err)
-				{
-					cout << err << endl;
-				}
-			
-			
+
+			try
+			{
+				cmd.AddMedicine(c);
+			}
+			catch (const char* err)
+			{
+				cout << err << endl;
+			}
+
+
 		}
-		else if (userInput=='3')
+		else if (userInput == '3')
 		{
 			cout << "Most popular ill is " << cmd.GetMostPopularIll() << endl;
 		}
